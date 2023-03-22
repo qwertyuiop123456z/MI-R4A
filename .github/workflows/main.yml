@@ -76,7 +76,7 @@ jobs:
           df -h
       - name: 下载源码与插件
         run: |
-            git clone https://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@github.com/qwertyuiop123456z/myOpenwrt.git
+            git clone https://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@github.com/qwertyuiop123456z/myOpenwrt.git
             mv ./myOpenwrt/* ./
             mv ./myOpenwrt/.* ./
             
