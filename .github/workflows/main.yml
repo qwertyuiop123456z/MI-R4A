@@ -77,12 +77,12 @@ jobs:
       - name: 下载源码与插件
         run: |
             git clone https://github.com/qwertyuiop123456z/myOpenwrt.git
+            chmod -R 777 myOpenwrt
             cd myOpenwrt
             
             ls
       - name: 升级feeds
         run: |
-          chmod -R 777 myOpenwrt
           cd myOpenwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -92,7 +92,6 @@ jobs:
           cat .config
       - name: 编译
         run: |
-          chmod -R 777 myOpenwrt
           cd myOpenwrt
           make -j$(nproc) || make -j1 V=s
           echo "======================="
@@ -104,7 +103,6 @@ jobs:
       - name: 整理固件目录
         run: |
           cd myOpenwrt
-          chmod -R 777 myOpenwrt
           mkdir -p ./collected_firmware/packages
           rm -rf $(find ./bin/targets/ -type d -name "packages")
           cp -rf $(find ./bin/targets/ -type f) ./collected_firmware
