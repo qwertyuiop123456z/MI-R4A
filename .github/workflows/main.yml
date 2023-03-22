@@ -82,6 +82,7 @@ jobs:
             ls
       - name: 升级feeds
         run: |
+          chmod -R 777 myOpenwrt
           cd myOpenwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -91,6 +92,7 @@ jobs:
           cat .config
       - name: 编译
         run: |
+          chmod -R 777 myOpenwrt
           cd myOpenwrt
           make -j$(nproc) || make -j1 V=s
           echo "======================="
@@ -101,6 +103,8 @@ jobs:
           du -h ./ --max-depth=1
       - name: 整理固件目录
         run: |
+          cd myOpenwrt
+          chmod -R 777 myOpenwrt
           mkdir -p ./collected_firmware/packages
           rm -rf $(find ./bin/targets/ -type d -name "packages")
           cp -rf $(find ./bin/targets/ -type f) ./collected_firmware
