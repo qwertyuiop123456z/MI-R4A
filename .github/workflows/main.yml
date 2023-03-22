@@ -8,7 +8,7 @@
 #
 # 源码采用lean lede或者lienol openwrt master分支
 #
-name: 固件编译
+name: hhhh
 on:
   workflow_dispatch:
     inputs:
@@ -67,7 +67,6 @@ jobs:
         uses: actions/checkout@v3
       - name: 环境准备
         run: |
-          git clone https://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@github.com/qwertyuiop123456z/myOpenwrt.git
           #sudo rm -rf /usr/share/dotnet /etc/mysql /etc/apt/sources.list.d /usr/local/lib/android /opt/ghc
           #sudo -E apt-get -y purge ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* php* android*
           sudo -E apt-get update
@@ -77,6 +76,7 @@ jobs:
           df -h
       - name: 下载源码与插件
         run: |
+            git clone https://github.com/qwertyuiop123456z/myOpenwrt.git
             mv ./myOpenwrt/* ./
             mv ./myOpenwrt/.* ./
             
