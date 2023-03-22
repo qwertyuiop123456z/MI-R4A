@@ -74,21 +74,9 @@ jobs:
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
           df -h
-      - name: 机型选择
-        run: |
-          cd preset-models ; NUMBER=$(python3 target_select.py ${{ github.event.inputs.model }}) ; cd ..
-          echo "你选择了：${{ github.event.inputs.model }}"
-          echo "CLONE_SH=preset-models/${NUMBER}clone.sh" >> $GITHUB_ENV
-          echo "MODIFY_SH=preset-models/${NUMBER}modify.sh" >> $GITHUB_ENV
-          echo "CONFIG_PA=preset-models/${NUMBER}.config" >> $GITHUB_ENV
-          echo "RELEASE_TITLE=$(sed -n "/start of ${NUMBER} model/,/end of ${NUMBER} model/p" preset-models/release_content.txt | grep 'release_title' | cut -d = -f 2)" >> $GITHUB_ENV
-          echo "ZH_TITLE=$(sed -n "/start of ${NUMBER} model/,/end of ${NUMBER} model/p" preset-models/release_content.txt | grep 'zh_title' | cut -d = -f 2)" >> $GITHUB_ENV
-          echo "KEY_INFO<<EOF" >> $GITHUB_ENV
-          sed -n "/start of ${NUMBER} model/,/end of ${NUMBER} model/p" preset-models/release_content.txt | grep -E -v '#|=' >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
       - name: 下载源码与插件
         run: |
-            git clone https://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@github.com/qwertyuiop123456z/myOpenwrt.git
+            git clone https://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@github.com/qwertyuiop123456z/myOpenwrt.git
             mv ./myOpenwrt/* ./
             mv ./myOpenwrt/.* ./
             
