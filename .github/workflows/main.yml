@@ -82,14 +82,16 @@ jobs:
             ls
       - name: 升级feeds
         run: |
+          cd myOpenwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       - name: 生成.config文件
         run: |
-          cat ./.config
-          make defconfig
+          cd myOpenwrt
+          cat .config
       - name: 编译
         run: |
+          cd myOpenwrt
           make -j$(nproc) || make -j1 V=s
           echo "======================="
           echo "Space usage:"
