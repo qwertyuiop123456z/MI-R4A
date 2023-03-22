@@ -77,8 +77,7 @@ jobs:
       - name: 下载源码与插件
         run: |
             git clone https://github.com/qwertyuiop123456z/myOpenwrt.git
-            mv ./myOpenwrt/* ./
-            mv ./myOpenwrt/.* ./
+            cd myOpenwrt
             
             ls
       - name: 升级feeds
